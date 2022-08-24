@@ -15,17 +15,41 @@
   <link href="starter-template.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="d-flex flex-column h-100">
 
-  <div class="col-lg-8 mx-auto p-3 py-md-5">
-    <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
-      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-        <span class="fs-4"><img src="/images/Logo 2022-1.png" style="width:200px"></span>
-      </a>
-    </header>
+  <header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">1nn0va Saturday 2022</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="agenda.html">Agenda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="speakers.html">Speakers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="registrazione.html">Registrazione</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
 
-    <main>
-      <h1>1nn0va Saturday 2022</h1>
+  <!-- Begin page content -->
+  <main class="flex-shrink-0">
+    <div class="container">
+      <img src="/images/Logo 2022-1.png" style="width:400px"/>
       <p class="fs-5 col-md-12">Sabato 24 settembre 2022 1nn0va torna, presso il Consorzio Universitario di Pordenone,
         con un evento off-line, in presenza!</p>
       <p class="fs-5 col-md-12">
@@ -33,7 +57,8 @@
         voglia di un evento in presenza.</p>
       <p class="fs-5 col-md-12">
         Di cosa parleremo? Ovviamente di Microsoft Azure, di Microsoft .NET e di Microsoft Data Platform. Finalmente
-        abbiamo l'agenda <a href="agenda.html">qui</a>, ma comunque crescerà ancora nei prossimi giorni.</p>
+        abbiamo l'agenda <a href="agenda.html">qui</a>, ma comunque crescerà ancora nei prossimi giorni. Ma come vedete,
+        ci sono tanti <a href="speakers.html">speakers</a> che hanno voglia di parlarvi delle ultime novità.</p>
       <p class="fs-5 col-md-12">
         Riguardo la situazione mondiale, sappiamo tutti che le restrizioni si sono allentate, ma non sono state
         annullate, e, purtroppo, i contagi non sono finiti. Quindi dovremo comunque fare attenzione, tenere il
@@ -41,7 +66,9 @@
         questo, ma combatteremo fino all'ultimo, forse influirà sulla presenza della pizza Kebab (ma ci stiamo
         lavorando!)...ma tranquilli che comunque mangeremo insieme, in sicurezza.</p>
       <p class="fs-5 col-md-12">
-        Se qualcuno è interessato a sponsorizzarci, contattate <a href="https://www.linkedin.com/in/marcopozzan/" target="_blank">Marco</a> o <a href="https://www.linkedin.com/in/marcoparenzan/" target="_blank">Marco</a> in privato e parliamone! Questo ci permetterà appunto
+        Se qualcuno è interessato a sponsorizzarci, contattate <a href="https://www.linkedin.com/in/marcopozzan/"
+          target="_blank">Marco</a> o <a href="https://www.linkedin.com/in/marcoparenzan/" target="_blank">Marco</a> in
+        privato e parliamone! Questo ci permetterà appunto
         di poter organizzare questo evento e permetterci il fatto che sia gratuito!</p>
       <p class="fs-5 col-md-12">
         Quindi, cominciate ad iscrivervi e
@@ -50,34 +77,17 @@
         Se sei uno speaker, forse vuoi mandarci una proposta alla CfP, dato che spazio ancora c'è: puoi inviarci una
         proposta <a href="https://sessionize.com/1nn0vaSat2022" target="_blank">qui</a></p>
       <p class="fs-5 col-md-12">
-        L'evento è gratuito, ma la registrazione obbligatoria. Dobbiamo sapere quanti siete per organizzarci al meglio! Potete registrarvi sul <a target="_blank" href="http://1nn0vasat2022.eventbrite.it/">sito</a> o immediatamente qui sotto
-      <div id="eventbrite-widget-container-371954143857"></div>
-      </p>
-    </main>
-    <footer class="pt-5 my-5 text-muted border-top">
-      1nn0va Team &middot; &copy; 2022
-    </footer>
-  </div>
+        L'evento è gratuito, ma la registrazione obbligatoria. Dobbiamo sapere quanti siete per organizzarci al meglio!
+        Potete registrarvi <a href="registrazione.html">qui</a>
+    </div>
+  </main>
+  <footer class="footer mt-auto py-3 bg-light">
+    <div class="container">
+      <span class="text-muted"> 1nn0va Team &middot; &copy; 2022</span>
+    </div>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://www.eventbrite.it/static/widgets/eb_widgets.js"></script>
-
-  <script type="text/javascript">
-    var exampleCallback = function () {
-      console.log('Order complete!');
-    };
-
-    window.EBWidgets.createWidget({
-      // Required
-      widgetType: 'checkout',
-      eventId: '371954143857',
-      iframeContainerId: 'eventbrite-widget-container-371954143857',
-
-      // Optional
-      iframeContainerHeight: 425,  // Widget height in pixels. Defaults to a minimum of 425px if not provided
-      onOrderComplete: exampleCallback  // Method called when an order has successfully completed
-    });
-  </script>
 
 </body>
 

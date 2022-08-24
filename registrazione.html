@@ -32,13 +32,13 @@
               <a class="nav-link" href="index.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="agenda.html">Agenda</a>
+              <a class="nav-link" href="agenda.html">Agenda</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="speakers.html">Speakers</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="registrazione.html">Registrazione</a>
+              <a class="nav-link active" aria-current="page" href="registrazione.html">Registrazione</a>
             </li>
           </ul>
         </div>
@@ -49,7 +49,13 @@
   <!-- Begin page content -->
   <main class="flex-shrink-0">
     <div class="container">
-      <script type="text/javascript" src="https://sessionize.com/api/v2/m619fakw/view/GridSmart"></script>
+      <h1>Registrazione</h1>
+      <p class="fs-5 col-md-12">
+        L'evento è gratuito, ma la registrazione obbligatoria. Dobbiamo sapere quanti siete per organizzarci al meglio!
+        Potete registrarvi sul <a target="_blank" href="http://1nn0vasat2022.eventbrite.it/">sito</a> o immediatamente
+        qui sotto
+      <div id="eventbrite-widget-container-371954143857"></div>
+      </p>
     </div>
   </main>
   <footer class="footer mt-auto py-3 bg-light">
@@ -57,6 +63,26 @@
       <span class="text-muted"> 1nn0va Team &middot; &copy; 2022</span>
     </div>
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://www.eventbrite.it/static/widgets/eb_widgets.js"></script>
+
+  <script type="text/javascript">
+    var exampleCallback = function () {
+      console.log('Order complete!');
+    };
+
+    window.EBWidgets.createWidget({
+      // Required
+      widgetType: 'checkout',
+      eventId: '371954143857',
+      iframeContainerId: 'eventbrite-widget-container-371954143857',
+
+      // Optional
+      iframeContainerHeight: 425,  // Widget height in pixels. Defaults to a minimum of 425px if not provided
+      onOrderComplete: exampleCallback  // Method called when an order has successfully completed
+    });
+  </script>
 
 </body>
 

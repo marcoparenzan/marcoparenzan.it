@@ -1,5 +1,10 @@
 body {
   background-color: lightgrey;
+  min-height: 75rem;
+}
+
+main > .container {
+  padding: 60px 15px 0;
 }
 
 .icon-list li::before {
