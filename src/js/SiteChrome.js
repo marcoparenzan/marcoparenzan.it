@@ -18,11 +18,13 @@
       ['index.html', 'Blog'], ['profilo.html', 'Profilo'], ['iot.html', 'IoT'],
       ['commodore64.html', 'C64'], ['eventi.html', 'Eventi'], ['corsi.html', 'Corsi']
     ];
-    const nav = links.map(([page, label]) => {
+    const internalNav = links.map(([page, label]) => {
       const active = this.inCoursesFolder ? page === 'corsi.html' : this.page === page;
       return `<a href="${this.root}${page}" class="border-b py-1 font-mono text-xs uppercase tracking-widest transition ${active ? 'border-lime text-lime' : 'border-transparent text-paper/60 hover:text-paper'}">${label}</a>`;
     }).join('');
-    header.innerHTML = `<nav class="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 lg:px-8" aria-label="Navigazione principale"><a href="${this.root}index.html" class="flex items-center gap-3 font-semibold tracking-tight"><span class="grid size-8 place-items-center bg-lime font-mono text-xs font-bold text-ink">MP</span><span>Marco Parenzan</span></a><div class="hidden items-center gap-6 lg:flex">${nav}</div><button data-menu-button class="grid size-10 place-items-center border border-white/15 lg:hidden" aria-label="Apri menu" aria-expanded="false"><span class="text-xl">≡</span></button></nav><div data-mobile-menu class="hidden border-t border-white/10 px-5 py-5 lg:hidden"><div class="flex flex-col gap-4">${nav}</div></div>`;
+    const externalNav = `<a href="https://www.orbitavintage.it" target="_blank" rel="noopener noreferrer" class="border-b border-transparent py-1 font-mono text-xs uppercase tracking-widest text-paper/60 transition hover:border-azure hover:text-azure" aria-label="Visita Orbita Vintage in una nuova scheda">Orbita Vintage ↗</a>`;
+    const nav = internalNav + externalNav;
+    header.innerHTML = `<nav class="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 lg:px-8" aria-label="Navigazione principale"><a href="${this.root}index.html" class="flex items-center gap-3 font-semibold tracking-tight"><span class="grid size-8 place-items-center bg-lime font-mono text-xs font-bold text-ink">MP</span><span>Marco Parenzan</span></a><div class="hidden items-center gap-5 lg:flex">${nav}</div><button data-menu-button class="grid size-10 place-items-center border border-white/15 lg:hidden" aria-label="Apri menu" aria-expanded="false"><span class="text-xl">≡</span></button></nav><div data-mobile-menu class="hidden border-t border-white/10 px-5 py-5 lg:hidden"><div class="flex flex-col gap-4">${nav}</div></div>`;
   }
 
   renderFooter() {

@@ -55791,3 +55791,314 @@ Ho aggiornato anche la descrizione SEO della pagina.
 
 ---
 
+### USER — 08:52:02
+
+Vorrei aggiungere Orbita Vintage tra i link in alto
+
+---
+
+### TOOL — FileSystem.ListFiles — 08:52:11
+
+args: subdirectory=src/js
+result: [FILE] src\js\BlogFeed.js
+[FILE] src\js\CourseCatalog.js
+[FILE] src\js\CourseLibrary.js
+[FILE] src\js\EventSchedule.js
+[FILE] src\js\main.js
+[FILE] src\js\NuclearEngineeringCourse.js
+[FILE] src\js\PowerElectronicsCourse.js
+[FILE] src\js\QuantumCourse.js
+[FILE] src\js\QuantumCourse2016.js
+[FILE] src\js\SiteChrome.js
+[FILE] src\js\StanfordCme295Course.js
+
+---
+
+### TOOL — FileSystem.ReadFile — 08:52:11
+
+args: relativePath=src/js/SiteChrome.js
+result: export class SiteChrome {
+  constructor() {
+    this.page = location.pathname.split('/').pop() || 'index.html';
+    this.inCoursesFolder = location.pathname.split('/').includes('Courses');
+    this.root = this.inCoursesFolder ? '../' : '';
+  }
+
+  init() {
+    this.renderHeader();
+    this.renderFooter();
+    this.bindMenu();
+  }
+
+  renderHeader() {
+    const header = document.querySelector('[data-site-header]');
+    if (!header) return;
+    const links = [
+      ['index.html', 'Blog'], ['profilo.html', 'Profilo'], ['iot.html', 'IoT'],
+      ['commodore64.html', 'C64'], ['eventi.html', 'Eventi'], ['corsi.html', 'Corsi']
+    ];
+    const nav = links.map(([page, label]) => {
+      const active = this.inCoursesFolder ? page === 'corsi.html' : this.page === page;
+      return `<a href="${this.root}${page}" class="border-b py-1 font-mono text-xs uppercase tracking-widest transition ${active ? 'border-lime text-lime' : 'border-transparent text-paper/60 hover:text-paper'}">${label}</a>`;
+    }).join('');
+    header.innerHTML = `<nav class="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 lg:px-8" aria-label="Navigazione principale"><a href="${this.root}index.html" class="flex items-center gap-3 font-semibold tracking-tight"><span class="grid size-8 place-items-center bg-lime font-mono text-xs font-bold text-ink">MP</span><span>Marco Parenzan</span></a><div class="hidden items-center gap-6 lg:flex">${nav}</div><button data-menu-button class="grid size-10 place-items-center border border-white/15 lg:hidden" aria-label="Apri menu" aria-expanded="false"><span class="text-xl">≡</span></button></nav><div data-mobile-menu class="hidden border-t border-white/10 px-5 py-5 lg:hidden"><div class="flex flex-col gap-4">${nav}</div></div>`;
+  }
+
+  renderFooter() {
+    const footer = document.querySelector('[data-site-footer]');
+    if (!footer) return;
+    const year = new Date().getFullYear();
+    footer.className = 'border-t border-white/10';
+    footer.innerHTML = `<div class="mx-auto max-w-7xl px-5 py-12 lg:px-8"><div class="flex flex-col justify-between gap-8 sm:flex-row sm:items-end"><div><p class="text-2xl font-semibold">Restiamo connessi.</p><div class="mt-5 flex flex-wrap gap-x-6 gap-y-3 font-mono text-xs uppercase tracking-widest"><a class="hover:text-lime" href="https://www.linkedin.com/in/marcoparenzan/" target="_blank" rel="noopener">LinkedIn ↗</a><a class="hover:text-lime" href="https://www.sessionize.com/marcoparenzan/" target="_blank" rel="noopener">Sessionize ↗</a><a class="hover:text-lime" href="https://mvp.microsoft.com/it-it/PublicProfile/5000823" target="_blank" rel="noopener">Microsoft MVP ↗</a><a class="hover:text-lime" href="https://github.com/marcoparenzan" target="_blank" rel="noopener">GitHub ↗</a><a class="hover:text-lime" href="https://www.facebook.com/parenzan.marco" target="_blank" rel="noopener">Facebook ↗</a><a class="hover:text-lime" href="https://www.instagram.com/marcoparenzan/" target="_blank" rel="noopener">Instagram ↗</a></div></div><p class="font-mono text-[10px] uppercase tracking-widest text-paper/35">© ${year} Marco Parenzan · Built with curiosity</p></div></div>`;
+  }
+
+  bindMenu() {
+    const button = document.querySelector('[data-menu-button]');
+    const menu = document.querySelector('[data-mobile-menu]');
+    button?.addEventListener('click', () => {
+      const open = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', String(!open));
+      button.setAttribute('aria-label', open ? 'Apri menu' : 'Chiudi menu');
+      button.querySelector('span').textContent = open ? '≡' : '×';
+      menu.classList.toggle('hidden', open);
+    });
+  }
+}
+
+---
+
+### TOOL — FileSystem.ReadFile — 08:52:11
+
+args: relativePath=src/profilo.html
+result: <!doctype html>
+<html lang="it"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Marco Parenzan — Solutions Architect, Microsoft MVP Azure IoT, speaker e Community Lead di 1nn0va."><title>Profilo — Marco Parenzan</title><script src="https://cdn.tailwindcss.com"></script><script>tailwind.config={theme:{extend:{colors:{ink:'#080b0f',paper:'#eef0e9',lime:'#c6ff4a',azure:'#5db7ff'},fontFamily:{sans:['Inter','system-ui','sans-serif'],mono:['ui-monospace','monospace']}}}}</script><style>.grid-bg{background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:32px 32px}</style></head>
+<body class="bg-ink text-paper antialiased selection:bg-lime selection:text-ink"><header data-site-header class="sticky top-0 z-50 border-b border-white/10 bg-ink/85 backdrop-blur-xl"></header><main>
+<section class="relative overflow-hidden border-b border-white/10"><div class="grid-bg absolute inset-0 opacity-60"></div><div class="relative mx-auto grid min-h-[72vh] max-w-7xl items-center gap-14 px-5 py-20 md:grid-cols-[1fr_.42fr] lg:px-8"><div><p class="font-mono text-xs uppercase tracking-[.3em] text-lime">Fiume Veneto · Italia</p><h1 class="mt-7 text-6xl font-semibold leading-[.88] tracking-[-.06em] sm:text-7xl lg:text-[7rem]">Progetto.<br><span class="text-azure">Connetto.</span><br>Condivido.</h1><p class="mt-9 max-w-2xl text-lg leading-relaxed text-paper/65">Sono <strong class="text-paper">Marco Parenzan</strong>, solutions architect specializzato in IoT, Cloud, .NET e applicazioni industriali. Microsoft MVP, speaker e Community Lead di 1nn0va.</p><div class="mt-9 flex flex-wrap gap-3"><a href="https://mvp.microsoft.com/it-it/PublicProfile/5000823" target="_blank" rel="noopener noreferrer" class="bg-lime px-6 py-3 font-mono text-xs font-bold uppercase tracking-widest text-ink hover:bg-white">Profilo Microsoft MVP ↗</a><a href="https://www.sessionize.com/marcoparenzan/" target="_blank" rel="noopener noreferrer" class="border border-white/25 px-6 py-3 font-mono text-xs uppercase tracking-widest hover:border-azure hover:text-azure">Profilo speaker ↗</a></div></div><div class="relative mx-auto w-full max-w-sm md:mx-0"><div class="absolute -inset-4 translate-x-4 translate-y-4 border border-azure/35"></div><img src="https://cdn.sessionize.com/image/d1ab-400o400o2-sJkWpWDvUqqC2stjqEnXhU.jpg" alt="Ritratto di Marco Parenzan" class="relative aspect-square w-full object-cover grayscale transition duration-500 hover:grayscale-0"><div class="relative -mt-7 ml-5 inline-block bg-azure px-4 py-2 font-mono text-xs font-bold uppercase tracking-widest text-ink">Microsoft MVP · Azure IoT</div></div></div></section>
+<section class="mx-auto max-w-7xl px-5 py-24 lg:px-8"><div class="grid gap-12 lg:grid-cols-[.42fr_1fr]"><div><p class="font-mono text-xs uppercase tracking-[.3em] text-lime">Profilo</p><h2 class="mt-4 text-4xl font-semibold">Tecnologia con uno scopo.</h2></div><div class="grid gap-px bg-white/10 sm:grid-cols-2"><article class="bg-ink p-7"><span class="font-mono text-xs text-azure">ARCHITECTURE</span><h3 class="mt-8 text-2xl font-semibold">Dalle idee ai sistemi</h3><p class="mt-3 leading-relaxed text-paper/55">Disegno soluzioni cloud, IoT e industriali scalabili, capaci di trasformare complessità reale in valore.</p></article><a href="https://mvp.microsoft.com/it-it/PublicProfile/5000823" target="_blank" rel="noopener noreferrer" class="group bg-ink p-7 transition hover:bg-white/[.035]"><span class="font-mono text-xs text-lime">MICROSOFT MVP</span><img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Microsoft_MVP_banner.png" alt="Microsoft Most Valuable Professional" class="mt-5 h-24 w-full object-contain object-left" referrerpolicy="no-referrer"><h3 class="mt-5 text-2xl font-semibold">Azure IoT MVP <span class="text-lime">↗</span></h3><p class="mt-3 leading-relaxed text-paper/55">Microsoft MVP dal 2014, con riconoscimento specifico su Azure IoT dal 2024. Consulta il profilo ufficiale.</p></a><article class="bg-ink p-7"><span class="font-mono text-xs text-lime">COMMUNITY</span><h3 class="mt-8 text-2xl font-semibold">Le persone prima</h3><p class="mt-3 leading-relaxed text-paper/55">Community Lead di 1nn0va: eventi, mentoring e relazioni per far circolare la conoscenza.</p></article><article class="bg-ink p-7"><span class="font-mono text-xs text-azure">SPEAKING</span><h3 class="mt-8 text-2xl font-semibold">Condividere esperienza</h3><p class="mt-3 leading-relaxed text-paper/55">Speaker su Azure, IoT, .NET, Microsoft Fabric e architetture per applicazioni moderne.</p></article></div></div></section>
+<section class="border-y border-white/10 bg-white/[.025]"><div class="mx-auto grid max-w-7xl gap-12 px-5 py-20 lg:grid-cols-2 lg:px-8"><div><p class="font-mono text-xs uppercase tracking-[.3em] text-azure">Speaker identity</p><h2 class="mt-4 text-5xl font-semibold">Sessionize.</h2><p class="mt-5 max-w-xl text-lg leading-relaxed text-paper/60">Il mio archivio pubblico di sessioni, abstract, argomenti e attività da speaker. Qui trovi anche i badge Most Active Speaker e il modo per contattarmi per un evento.</p><a href="https://www.sessionize.com/marcoparenzan/" target="_blank" rel="noopener noreferrer" class="mt-8 inline-block bg-azure px-6 py-3 font-mono text-xs font-bold uppercase tracking-widest text-ink hover:bg-white">Visita il profilo ↗</a></div><div class="border-l border-lime/50 pl-8"><p class="font-mono text-xs uppercase tracking-widest text-lime">Argomenti</p><ul class="mt-7 flex flex-wrap gap-3 text-sm"><li class="border border-white/15 px-4 py-2">Azure</li><li class="border border-white/15 px-4 py-2">Industrial IoT</li><li class="border border-white/15 px-4 py-2">.NET</li><li class="border border-white/15 px-4 py-2">Microsoft Fabric</li><li class="border border-white/15 px-4 py-2">Blazor</li><li class="border border-white/15 px-4 py-2">Cloud Architecture</li></ul></div></div></section>
+<section class="mx-auto max-w-7xl px-5 py-20 lg:px-8"><p class="font-mono text-xs uppercase tracking-[.3em] text-lime">Interessi & progetti</p><div class="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4"><a href="iot.html" class="min-h-64 border border-white/15 p-7 hover:border-azure"><span class="font-mono text-xs text-azure">FIELD / CLOUD</span><h3 class="mt-24 text-3xl font-semibold">IoT →</h3></a><a href="commodore64.html" class="min-h-64 border border-white/15 p-7 hover:border-lime"><span class="font-mono text-xs text-lime">RETRO / CODE</span><h3 class="mt-24 text-3xl font-semibold">Commodore 64 →</h3></a><a href="https://www.orbitavintage.it" target="_blank" rel="noopener" class="min-h-64 border border-white/15 p-7 hover:border-lime"><span class="font-mono text-xs text-paper/40">CURATION / CINEMA</span><h3 class="mt-24 text-3xl font-semibold">Orbita Vintage ↗</h3></a><div class="min-h-64 border border-dashed border-white/15 p-7 text-paper/35"><span class="font-mono text-xs">NEXT / OPEN SLOT</span><h3 class="mt-24 text-2xl font-semibold">＋ Prossimo progetto</h3></div></div></section>
+</main><footer data-site-footer></footer><script type="module" src="js/main.js"></script></body></html>
+
+---
+
+### TOOL — FileSystem.WriteFile — 08:52:26
+
+args: relativePath=src/js/SiteChrome.js, content=export class SiteChrome {
+  constructor() {
+    this.page = location.pathname.split('/').pop() || 'index.html';
+    this.inCoursesFolder = location.pathname.split('/').includes('Courses');
+    this.root = this.inCoursesFolder ? '../' : '';
+  }
+
+  init() {
+    this.renderHeader();
+    this.renderFooter();
+    this.bindMenu();
+  }
+
+  renderHeader() {
+    const header = document.querySelector('[data-site-header]');
+    if (!header) return;
+    const links = [
+      ['index.html', 'Blog'], ['profilo.html', 'Profilo'], ['iot.html', 'IoT'],
+      ['commodore64.html', 'C64'], ['eventi.html', 'Eventi'], ['corsi.html', 'Corsi']
+    ];
+    const internalNav = links.map(([page, label]) => {
+      const active = this.inCoursesFolder ? page === 'corsi.html' : this.page === page;
+      return `<a href="${this.root}${page}" class="border-b py-1 font-mono text-xs uppercase tracking-widest transition ${active ? 'border-lime text-lime' : 'border-transparent text-paper/60 hover:text-paper'}">${label}</a>`;
+    }).join('');
+    const externalNav = `<a href="https://www.orbitavintage.it" target="_blank" rel="noopener noreferrer" class="border-b border-transparent py-1 font-mono text-xs uppercase tracking-widest text-paper/60 transition hover:border-azure hover:text-azure" aria-label="Visita Orbita Vintage in una nuova scheda">Orbita Vintage ↗</a>`;
+    const nav = internalNav + externalNav;
+    header.innerHTML = `<nav class="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 lg:px-8" aria-label="Navigazione principale"><a href="${this.root}index.html" class="flex items-center gap-3 font-semibold tracking-tight"><span class="grid size-8 place-items-center bg-lime font-mono text-xs font-bold text-ink">MP</span><span>Marco Parenzan</span></a><div class="hidden items-center gap-5 lg:flex">${nav}</div><button data-menu-button class="grid size-10 place-items-center border border-white/15 lg:hidden" aria-label="Apri menu" aria-expanded="false"><span class="text-xl">≡</span></button></nav><div data-mobile-menu class="hidden border-t border-white/10 px-5 py-5 lg:hidden"><div class="flex flex-col gap-4">${nav}</div></div>`;
+  }
+
+  renderFooter() {
+    const footer = document.querySelector('[data-site-footer]');
+    if (!footer) return;
+    const year = new Date().getFullYear();
+    footer.className = 'border-t border-white/10';
+    footer.innerHTML = `<div class="mx-auto max-w-7xl px-5 py-12 lg:px-8"><div class="flex flex-col justify-between gap-8 sm:flex-row sm:items-end"><div><p class="text-2xl font-semibold">Restiamo connessi.</p><div class="mt-5 flex flex-wrap gap-x-6 gap-y-3 font-mono text-xs uppercase tracking-widest"><a class="hover:text-lime" href="https://www.linkedin.com/in/marcoparenzan/" target="_blank" rel="noopener">LinkedIn ↗</a><a class="hover:text-lime" href="https://www.sessionize.com/marcoparenzan/" target="_blank" rel="noopener">Sessionize ↗</a><a class="hover:text-lime" href="https://mvp.microsoft.com/it-it/PublicProfile/5000823" target="_blank" rel="noopener">Microsoft MVP ↗</a><a class="hover:text-lime" href="https://github.com/marcoparenzan" target="_blank" rel="noopener">GitHub ↗</a><a class="hover:text-lime" href="https://www.facebook.com/parenzan.marco" target="_blank" rel="noopener">Facebook ↗</a><a class="hover:text-lime" href="https://www.instagram.com/marcoparenzan/" target="_blank" rel="noopener">Instagram ↗</a></div></div><p class="font-mono text-[10px] uppercase tracking-widest text-paper/35">© ${year} Marco Parenzan · Built with curiosity</p></div></div>`;
+  }
+
+  bindMenu() {
+    const button = document.querySelector('[data-menu-button]');
+    const menu = document.querySelector('[data-mobile-menu]');
+    button?.addEventListener('click', () => {
+      const open = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', String(!open));
+      button.setAttribute('aria-label', open ? 'Apri menu' : 'Chiudi menu');
+      button.querySelector('span').textContent = open ? '≡' : '×';
+      menu.classList.toggle('hidden', open);
+    });
+  }
+}
+result: OK — written src/js/SiteChrome.js (4060 chars)
+
+---
+
+### TOOL — FileSystem.ReadFile — 08:52:34
+
+args: relativePath=src/js/SiteChrome.js
+result: export class SiteChrome {
+  constructor() {
+    this.page = location.pathname.split('/').pop() || 'index.html';
+    this.inCoursesFolder = location.pathname.split('/').includes('Courses');
+    this.root = this.inCoursesFolder ? '../' : '';
+  }
+
+  init() {
+    this.renderHeader();
+    this.renderFooter();
+    this.bindMenu();
+  }
+
+  renderHeader() {
+    const header = document.querySelector('[data-site-header]');
+    if (!header) return;
+    const links = [
+      ['index.html', 'Blog'], ['profilo.html', 'Profilo'], ['iot.html', 'IoT'],
+      ['commodore64.html', 'C64'], ['eventi.html', 'Eventi'], ['corsi.html', 'Corsi']
+    ];
+    const internalNav = links.map(([page, label]) => {
+      const active = this.inCoursesFolder ? page === 'corsi.html' : this.page === page;
+      return `<a href="${this.root}${page}" class="border-b py-1 font-mono text-xs uppercase tracking-widest transition ${active ? 'border-lime text-lime' : 'border-transparent text-paper/60 hover:text-paper'}">${label}</a>`;
+    }).join('');
+    const externalNav = `<a href="https://www.orbitavintage.it" target="_blank" rel="noopener noreferrer" class="border-b border-transparent py-1 font-mono text-xs uppercase tracking-widest text-paper/60 transition hover:border-azure hover:text-azure" aria-label="Visita Orbita Vintage in una nuova scheda">Orbita Vintage ↗</a>`;
+    const nav = internalNav + externalNav;
+    header.innerHTML = `<nav class="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 lg:px-8" aria-label="Navigazione principale"><a href="${this.root}index.html" class="flex items-center gap-3 font-semibold tracking-tight"><span class="grid size-8 place-items-center bg-lime font-mono text-xs font-bold text-ink">MP</span><span>Marco Parenzan</span></a><div class="hidden items-center gap-5 lg:flex">${nav}</div><button data-menu-button class="grid size-10 place-items-center border border-white/15 lg:hidden" aria-label="Apri menu" aria-expanded="false"><span class="text-xl">≡</span></button></nav><div data-mobile-menu class="hidden border-t border-white/10 px-5 py-5 lg:hidden"><div class="flex flex-col gap-4">${nav}</div></div>`;
+  }
+
+  renderFooter() {
+    const footer = document.querySelector('[data-site-footer]');
+    if (!footer) return;
+    const year = new Date().getFullYear();
+    footer.className = 'border-t border-white/10';
+    footer.innerHTML = `<div class="mx-auto max-w-7xl px-5 py-12 lg:px-8"><div class="flex flex-col justify-between gap-8 sm:flex-row sm:items-end"><div><p class="text-2xl font-semibold">Restiamo connessi.</p><div class="mt-5 flex flex-wrap gap-x-6 gap-y-3 font-mono text-xs uppercase tracking-widest"><a class="hover:text-lime" href="https://www.linkedin.com/in/marcoparenzan/" target="_blank" rel="noopener">LinkedIn ↗</a><a class="hover:text-lime" href="https://www.sessionize.com/marcoparenzan/" target="_blank" rel="noopener">Sessionize ↗</a><a class="hover:text-lime" href="https://mvp.microsoft.com/it-it/PublicProfile/5000823" target="_blank" rel="noopener">Microsoft MVP ↗</a><a class="hover:text-lime" href="https://github.com/marcoparenzan" target="_blank" rel="noopener">GitHub ↗</a><a class="hover:text-lime" href="https://www.facebook.com/parenzan.marco" target="_blank" rel="noopener">Facebook ↗</a><a class="hover:text-lime" href="https://www.instagram.com/marcoparenzan/" target="_blank" rel="noopener">Instagram ↗</a></div></div><p class="font-mono text-[10px] uppercase tracking-widest text-paper/35">© ${year} Marco Parenzan · Built with curiosity</p></div></div>`;
+  }
+
+  bindMenu() {
+    const button = document.querySelector('[data-menu-button]');
+    const menu = document.querySelector('[data-mobile-menu]');
+    button?.addEventListener('click', () => {
+      const open = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', String(!open));
+      button.setAttribute('aria-label', open ? 'Apri menu' : 'Chiudi menu');
+      button.querySelector('span').textContent = open ? '≡' : '×';
+      menu.classList.toggle('hidden', open);
+    });
+  }
+}
+
+---
+
+### TOOL — FileSystem.ReadFile — 08:52:34
+
+args: relativePath=src/js/main.js
+result: import { SiteChrome } from './SiteChrome.js';
+import { BlogFeed } from './BlogFeed.js';
+import { EventSchedule } from './EventSchedule.js';
+import { CourseLibrary } from './CourseLibrary.js';
+import { CourseCatalog } from './CourseCatalog.js';
+import { QuantumCourse } from './QuantumCourse.js';
+import { QuantumCourse2016 } from './QuantumCourse2016.js';
+import { PowerElectronicsCourse } from './PowerElectronicsCourse.js';
+import { NuclearEngineeringCourse } from './NuclearEngineeringCourse.js';
+import { StanfordCme295Course } from './StanfordCme295Course.js';
+
+document.addEventListener('DOMContentLoaded', () => {
+  new SiteChrome().init();
+  new BlogFeed('#blog-post-list').init();
+  new EventSchedule('#event-list').init();
+  new CourseLibrary().init();
+  new CourseCatalog().init();
+  new QuantumCourse().init();
+  new QuantumCourse2016().init();
+  new PowerElectronicsCourse().init();
+  new NuclearEngineeringCourse().init();
+  new StanfordCme295Course().init();
+});
+
+---
+
+### TOOL — FileSystem.ReadFile — 08:52:34
+
+args: relativePath=src/index.html
+result: <!doctype html>
+<html lang="it" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Il blog di Marco Parenzan: appunti e idee su Azure, IoT, .NET, architettura software e community.">
+  <title>Blog — Marco Parenzan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{ink:'#080b0f',paper:'#eef0e9',lime:'#c6ff4a',azure:'#5db7ff',muted:'#8b949e'},fontFamily:{sans:['Inter','system-ui','sans-serif'],mono:['ui-monospace','SFMono-Regular','monospace']}}}}</script>
+  <style>body{background-image:radial-gradient(circle at 82% 0,rgba(93,183,255,.12),transparent 26rem)}.grid-bg{background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:32px 32px}</style>
+</head>
+<body class="min-h-screen bg-ink text-paper antialiased selection:bg-lime selection:text-ink">
+  <header data-site-header class="sticky top-0 z-50 border-b border-white/10 bg-ink/85 backdrop-blur-xl"></header>
+  <main>
+    <section class="relative overflow-hidden border-b border-white/10">
+      <div class="grid-bg absolute inset-0 opacity-60" aria-hidden="true"></div>
+      <div class="relative mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
+        <div class="max-w-5xl">
+          <p class="flex items-center gap-3 font-mono text-xs uppercase tracking-[.3em] text-lime"><span class="size-2 animate-pulse rounded-full bg-lime"></span> Appunti dal campo</p>
+          <h1 class="mt-8 text-6xl font-semibold leading-[.88] tracking-[-.06em] sm:text-8xl lg:text-[7.5rem]">Idee, codice<br>e <span class="text-azure">connessioni.</span></h1>
+          <p class="mt-9 max-w-2xl text-lg leading-relaxed text-paper/65 sm:text-xl">Il blog di <strong class="font-medium text-paper">Marco Parenzan</strong>. Scrivo di Azure, IoT, .NET, architettura software, innovazione industriale e vita di community.</p>
+        </div>
+        <div class="mt-12 flex flex-wrap gap-3">
+          <a href="#articoli" class="bg-lime px-6 py-3 font-mono text-xs font-bold uppercase tracking-widest text-ink transition hover:bg-white">Leggi gli ultimi post ↓</a>
+          <a href="profilo.html" class="border border-white/25 px-6 py-3 font-mono text-xs uppercase tracking-widest transition hover:border-azure hover:text-azure">Chi sono →</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="articoli" class="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24">
+      <div class="mb-12 grid gap-6 md:grid-cols-[1fr_.55fr] md:items-end">
+        <div><p class="font-mono text-xs uppercase tracking-[.3em] text-azure">Dal blog</p><h2 class="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">Ultimi post.</h2></div>
+        <p class="leading-relaxed text-paper/55">Le pubblicazioni nascono su LinkedIn. Qui trovi il punto di accesso al mio flusso di idee e, presto, una selezione editoriale dei contenuti.</p>
+      </div>
+      <div id="blog-post-list" class="grid gap-5 md:grid-cols-2 lg:grid-cols-3" aria-live="polite"></div>
+    </section>
+
+    <section class="border-y border-white/10 bg-white/[.025]">
+      <div class="mx-auto grid max-w-7xl gap-10 px-5 py-16 lg:grid-cols-[1fr_.55fr] lg:items-center lg:px-8">
+        <div><p class="font-mono text-xs uppercase tracking-[.3em] text-lime">Il blog continua su LinkedIn</p><h2 class="mt-4 max-w-3xl text-4xl font-semibold leading-tight">Segui le conversazioni dove pubblico.</h2><p class="mt-5 max-w-2xl text-lg leading-relaxed text-paper/60">Commenti, confronto e aggiornamenti sono parte del contenuto. Collegati con me per non perdere i prossimi post.</p></div>
+        <div class="lg:text-right"><a href="https://www.linkedin.com/in/marcoparenzan/recent-activity/all/" target="_blank" rel="noopener noreferrer" class="inline-block bg-azure px-7 py-4 font-mono text-xs font-bold uppercase tracking-widest text-ink transition hover:bg-white">Tutti i post su LinkedIn ↗</a></div>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-7xl px-5 py-20 lg:px-8"><div class="grid gap-px bg-white/10 sm:grid-cols-3">
+      <a href="eventi.html" class="group bg-ink p-7 hover:bg-white/[.03]"><span class="font-mono text-xs text-lime">COMMUNITY</span><h3 class="mt-8 text-2xl font-semibold">Eventi 1nn0va</h3><p class="mt-3 text-paper/50">Il prossimo evento e il programma 2027.</p><span class="mt-8 block font-mono text-xs text-lime">Esplora →</span></a>
+      <a href="corsi.html" class="group bg-ink p-7 hover:bg-white/[.03]"><span class="font-mono text-xs text-azure">LEARNING</span><h3 class="mt-8 text-2xl font-semibold">Learning Queue</h3><p class="mt-3 text-paper/50">Playlist e corsi YouTube da seguire.</p><span class="mt-8 block font-mono text-xs text-azure">Apri →</span></a>
+      <a href="https://www.sessionize.com/marcoparenzan/" target="_blank" rel="noopener noreferrer" class="group bg-ink p-7 hover:bg-white/[.03]"><span class="font-mono text-xs text-lime">SPEAKING</span><h3 class="mt-8 text-2xl font-semibold">Talk & sessioni</h3><p class="mt-3 text-paper/50">Profilo speaker, argomenti e interventi su Sessionize.</p><span class="mt-8 block font-mono text-xs text-lime">Sessionize ↗</span></a>
+    </div></section>
+  </main>
+  <footer data-site-footer></footer>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
+
+---
+
+### TOOL — StaticServer.Start — 08:52:42
+
+args: port=0
+result: http://127.0.0.1:56691
+
+---
+
+### AGENT — 08:52:49
+
+Aggiungerò **Orbita Vintage** alla navigazione principale in alto, come collegamento esterno a `https://www.orbitavintage.it`. Sarà disponibile sia nel menu desktop sia in quello mobile, con indicazione visiva dell’apertura verso un sito esterno.
+Fatto. Ho aggiunto **Orbita Vintage ↗** alla navigazione superiore:
+
+- visibile nel menu desktop;
+- disponibile anche nel menu mobile;
+- collegato a **https://www.orbitavintage.it**;
+- apertura in una nuova scheda;
+- stile dedicato al passaggio del mouse.
+
+**Anteprima:** http://127.0.0.1:56691/
+
+---
+
