@@ -8,6 +8,8 @@ import { QuantumCourse2016 } from './QuantumCourse2016.js';
 import { PowerElectronicsCourse } from './PowerElectronicsCourse.js';
 import { NuclearEngineeringCourse } from './NuclearEngineeringCourse.js';
 import { StanfordCme295Course } from './StanfordCme295Course.js';
+import { YouTubePlaylistCourse } from './YouTubePlaylistCourse.js';
+import { YalePhysicsCourse } from './YalePhysicsCourse.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   new SiteChrome().init();
@@ -20,4 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
   new PowerElectronicsCourse().init();
   new NuclearEngineeringCourse().init();
   new StanfordCme295Course().init();
+  new YouTubePlaylistCourse().init();
+  new YalePhysicsCourse().init();
 });
