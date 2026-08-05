@@ -1,31 +1,30 @@
 ﻿export class CourseCatalog {
+  constructor() {
+    this.courses = [
+      ['quantum-physics.html', 'MIT 8.04 · 2013', 'Quantum Physics I', '24 lecture complete su fondamenti, onde, spin ed entanglement.'],
+      ['quantum-physics-2016.html', 'MIT 8.04 · 2016', 'Quantum Physics I', '24 lecture segmentate con Barton Zwiebach.'],
+      ['power-electronics.html', 'MIT 6.622 · 2023', 'Power Electronics', '38 lecture su conversione, magnetici, inverter e controllo.'],
+      ['nuclear-engineering.html', 'MIT 22.01 · 2016', 'Nuclear Engineering', '35 lecture su fisica nucleare e radiazioni ionizzanti.'],
+      ['stanford-cme295.html', 'Stanford CME 295 · 2025', 'Transformers & LLM', '9 lecture con video e slide su modelli linguistici e agenti.'],
+      ['yale-fundamentals-physics.html', 'Yale PHYS 200', 'Fundamentals of Physics I', 'Meccanica, relatività e termodinamica.'],
+      ['yale-fundamentals-physics-ii.html', 'Yale PHYS 201', 'Fundamentals of Physics II', 'Elettromagnetismo, ottica e meccanica quantistica.'],
+      ['mit-deep-learning.html', 'MIT 6.7960 · 2024', 'Deep Learning', '24 lecture su architetture, modelli generativi e scaling.'],
+      ['mit-linear-algebra.html', 'MIT 18.06 · 2010', 'Linear Algebra', '35 video del corso di Gilbert Strang.']
+    ];
+  }
+
   init() {
-    this.updateMovedLinks();
-    const quantumCard = document.querySelector('a[href="Courses/quantum-physics-2016.html"]');
-    if (!quantumCard) return;
-    if (!document.querySelector('a[href="Courses/power-electronics.html"]')) quantumCard.insertAdjacentHTML('afterend', this.powerCard());
-    const powerCard = document.querySelector('a[href="Courses/power-electronics.html"]');
-    if (powerCard && !document.querySelector('a[href="Courses/nuclear-engineering.html"]')) powerCard.insertAdjacentHTML('afterend', this.nuclearCard());
-    const nuclearCard = document.querySelector('a[href="Courses/nuclear-engineering.html"]');
-    if (nuclearCard && !document.querySelector('a[href="Courses/stanford-cme295.html"]')) nuclearCard.insertAdjacentHTML('afterend', this.stanfordCard());
-    const stanfordCard = document.querySelector('a[href="Courses/stanford-cme295.html"]');
-    if (stanfordCard && !document.querySelector('a[href="Courses/yale-fundamentals-physics.html"]')) stanfordCard.insertAdjacentHTML('afterend', this.yaleCards());
-    const yaleTwo = document.querySelector('a[href="Courses/yale-fundamentals-physics-ii.html"]');
-    if (yaleTwo && !document.querySelector('a[href="Courses/mit-deep-learning.html"]')) yaleTwo.insertAdjacentHTML('afterend', this.mitCards());
+    const catalog = document.querySelector('#course-catalog');
+    if (catalog) {
+      catalog.innerHTML = this.courses.map(([url, code, title, summary], index) => `<a href="${url}" class="group flex min-h-72 flex-col border border-white/15 p-7 transition hover:border-lime"><div class="flex items-start justify-between"><span class="font-mono text-xs uppercase tracking-widest text-azure">${code}</span><span class="font-mono text-xs text-paper/25">${String(index + 1).padStart(2, '0')}</span></div><h2 class="mt-16 text-3xl font-semibold">${title}</h2><p class="mt-4 flex-1 leading-relaxed text-paper/55">${summary}</p><span class="mt-7 font-mono text-xs uppercase tracking-widest text-lime">Apri il corso →</span></a>`).join('');
+    }
+
+    const inCourses = location.pathname.toLowerCase().includes('/courses/');
+    if (!inCourses) {
+      document.querySelectorAll('a[href^="quantum-physics"], a[href^="Courses/"]').forEach((link) => {
+        const file = link.getAttribute('href').split('/').pop();
+        link.href = `Courses/${file}`;
+      });
+    }
   }
-
-  updateMovedLinks() {
-    const moved = ['quantum-physics.html', 'quantum-physics-2016.html', 'power-electronics.html', 'nuclear-engineering.html', 'stanford-cme295.html'];
-    moved.forEach(page => document.querySelectorAll(`a[href="${page}"]`).forEach(link => { link.href = `Courses/${page}`; }));
-  }
-
-  powerCard() { return `<a href="Courses/power-electronics.html" class="group flex min-h-[34rem] flex-col overflow-hidden border border-white/15 transition hover:border-yellow-300 lg:col-span-2"><div class="relative min-h-64 overflow-hidden bg-mit"><img src="https://ocw.mit.edu/courses/6-622-power-electronics-spring-2023/mit6_622_s23.jpg" alt="Nikola Tesla nel laboratorio" class="absolute inset-0 size-full object-cover mix-blend-luminosity opacity-65 transition duration-500 group-hover:scale-105"><span class="absolute left-6 top-6 bg-ink px-3 py-2 font-mono text-xs font-bold tracking-widest">MIT 6.622 · 2023</span></div><div class="flex flex-1 flex-col p-8"><span class="font-mono text-xs uppercase tracking-[.25em] text-yellow-300">David Perreault · Graduate</span><h2 class="mt-4 text-4xl font-semibold">Power Electronics</h2><p class="mt-5 flex-1 leading-relaxed text-paper/55">38 lecture su conversione DC/DC, magnetici, inverter, controllo, filtri EMI e sistemi risonanti.</p><div class="mt-8 flex justify-between border-t border-white/10 pt-5 font-mono text-xs uppercase tracking-widest"><span>38 video</span><span class="text-yellow-300">Apri →</span></div></div></a>`; }
-
-  nuclearCard() { return `<a href="Courses/nuclear-engineering.html" class="group flex min-h-[34rem] flex-col overflow-hidden border border-white/15 transition hover:border-cyan-300 lg:col-span-2"><div class="relative min-h-64 overflow-hidden bg-sky-950"><img src="https://ocw.mit.edu/courses/22-01-introduction-to-nuclear-engineering-and-ionizing-radiation-fall-2016/64a937e4f745ca4557288943eac0cec7_22-01f16.jpg" alt="Radiazione Cherenkov in un reattore" class="absolute inset-0 size-full object-cover mix-blend-luminosity opacity-70 transition duration-500 group-hover:scale-105"><span class="absolute left-6 top-6 bg-ink px-3 py-2 font-mono text-xs font-bold tracking-widest">MIT 22.01 · 2016</span></div><div class="flex flex-1 flex-col p-8"><span class="font-mono text-xs uppercase tracking-[.25em] text-cyan-300">Michael Short · Undergraduate</span><h2 class="mt-4 text-4xl font-semibold">Nuclear Engineering & Ionizing Radiation</h2><p class="mt-5 flex-1 leading-relaxed text-paper/55">35 lecture su fisica nucleare, radioattività, reattori, materiali, dosimetria e medicina.</p><div class="mt-8 flex justify-between border-t border-white/10 pt-5 font-mono text-xs uppercase tracking-widest"><span>35 lecture · 34 video</span><span class="text-cyan-300">Apri →</span></div></div></a>`; }
-
-  stanfordCard() { return `<a href="Courses/stanford-cme295.html" class="group flex min-h-[34rem] flex-col overflow-hidden border border-white/15 transition hover:border-red-400 lg:col-span-2"><div class="relative min-h-64 overflow-hidden bg-red-950"><img src="https://cme295.stanford.edu/lecture-1.jpg" alt="Lecture Stanford CME 295" class="absolute inset-0 size-full object-cover mix-blend-luminosity opacity-70 transition duration-500 group-hover:scale-105"><span class="absolute left-6 top-6 bg-ink px-3 py-2 font-mono text-xs font-bold tracking-widest">STANFORD CME 295 · 2025</span></div><div class="flex flex-1 flex-col p-8"><span class="font-mono text-xs uppercase tracking-[.25em] text-red-300">Afshine & Shervine Amidi</span><h2 class="mt-4 text-4xl font-semibold">Transformers & Large Language Models</h2><p class="mt-5 flex-1 leading-relaxed text-paper/55">9 lecture con video e slide su Transformer, training, tuning, reasoning, agenti e valutazione.</p><div class="mt-8 flex justify-between border-t border-white/10 pt-5 font-mono text-xs uppercase tracking-widest"><span>9 video · slide · esami</span><span class="text-red-300">Apri →</span></div></div></a>`; }
-
-  yaleCards() { return `<a href="Courses/yale-fundamentals-physics.html" class="group flex min-h-[28rem] flex-col border border-white/15 p-8 transition hover:border-lime"><span class="font-mono text-xs uppercase tracking-[.25em] text-azure">Yale · PHYS 200</span><div class="my-10 grid flex-1 place-items-center bg-[#00356b] text-7xl font-semibold text-white/90">Y</div><h2 class="text-3xl font-semibold">Fundamentals of Physics I</h2><p class="mt-4 text-paper/55">Meccanica, relatività e termodinamica con Ramamurti Shankar.</p><span class="mt-7 font-mono text-xs uppercase tracking-widest text-lime">Apri il corso →</span></a><a href="Courses/yale-fundamentals-physics-ii.html" class="group flex min-h-[28rem] flex-col border border-white/15 p-8 transition hover:border-azure"><span class="font-mono text-xs uppercase tracking-[.25em] text-lime">Yale · PHYS 201</span><div class="my-10 grid flex-1 place-items-center bg-[#00356b] text-7xl font-semibold text-white/90">Y</div><h2 class="text-3xl font-semibold">Fundamentals of Physics II</h2><p class="mt-4 text-paper/55">Elettromagnetismo, ottica e meccanica quantistica.</p><span class="mt-7 font-mono text-xs uppercase tracking-widest text-azure">Apri il corso →</span></a>`; }
-
-  mitCards() { return `<a href="Courses/mit-deep-learning.html" class="group flex min-h-[30rem] flex-col overflow-hidden border border-white/15 transition hover:border-lime"><div class="relative min-h-52 overflow-hidden bg-mit"><img src="https://ocw.mit.edu/courses/6-7960-deep-learning-fall-2024/mit6_7960_f24.jpg" alt="Deep Learning MIT 6.7960" class="absolute inset-0 size-full object-cover mix-blend-luminosity opacity-65 transition duration-500 group-hover:scale-105"><span class="absolute left-6 top-6 bg-ink px-3 py-2 font-mono text-xs font-bold tracking-widest">MIT 6.7960 · 2024</span></div><div class="flex flex-1 flex-col p-8"><span class="font-mono text-xs uppercase tracking-[.25em] text-azure">Isola · Beery · Bernstein</span><h2 class="mt-4 text-3xl font-semibold">Deep Learning</h2><p class="mt-4 flex-1 text-paper/55">Architetture, representation learning, modelli generativi, transfer e scaling.</p><span class="mt-7 font-mono text-xs uppercase tracking-widest text-lime">24 lecture · Apri →</span></div></a><a href="Courses/mit-linear-algebra.html" class="group flex min-h-[30rem] flex-col overflow-hidden border border-white/15 transition hover:border-azure"><div class="relative min-h-52 overflow-hidden bg-mit"><img src="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/862a5bbedf159572528b0f0766d1e611_18-06s10.jpg" alt="Linear Algebra MIT 18.06" class="absolute inset-0 size-full object-cover mix-blend-luminosity opacity-65 transition duration-500 group-hover:scale-105"><span class="absolute left-6 top-6 bg-ink px-3 py-2 font-mono text-xs font-bold tracking-widest">MIT 18.06 · 2010</span></div><div class="flex flex-1 flex-col p-8"><span class="font-mono text-xs uppercase tracking-[.25em] text-lime">Prof. Gilbert Strang</span><h2 class="mt-4 text-3xl font-semibold">Linear Algebra</h2><p class="mt-4 flex-1 text-paper/55">Sistemi lineari, sottospazi, ortogonalità, autovalori, SVD e trasformazioni.</p><span class="mt-7 font-mono text-xs uppercase tracking-widest text-azure">35 video · Apri →</span></div></a>`; }
 }

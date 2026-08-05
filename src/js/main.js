@@ -18,6 +18,12 @@ import { ShirowWorkDetail } from './ShirowWorkDetail.js';
 import { C64Games } from './C64Games.js';
 import { C64Neuromancer } from './C64Neuromancer.js';
 import { ActiveProjects } from './ActiveProjects.js';
+import { IoTTopicPage } from './IoTTopicPage.js';
+import { IndustrialIoTTopicPage } from './IndustrialIoTTopicPage.js';
+import { EmbeddedTopicPage } from './EmbeddedTopicPage.js';
+import { PhilosophyTopicPage } from './PhilosophyTopicPage.js';
+import { FilmPage } from './FilmPage.js';
+import { StarTrekGuide } from './StarTrekGuide.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   new SiteChrome().init();
@@ -40,4 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
   new C64Games().init();
   new C64Neuromancer().init();
   new ActiveProjects().init();
+  new IoTTopicPage().init();
+  new IndustrialIoTTopicPage().init();
+  new EmbeddedTopicPage().init();
+  new PhilosophyTopicPage().init();
+  new FilmPage().init();
+  new StarTrekGuide().init();
 });
