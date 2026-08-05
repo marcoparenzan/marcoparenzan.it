@@ -10,6 +10,14 @@ import { NuclearEngineeringCourse } from './NuclearEngineeringCourse.js';
 import { StanfordCme295Course } from './StanfordCme295Course.js';
 import { YouTubePlaylistCourse } from './YouTubePlaylistCourse.js';
 import { YalePhysicsCourse } from './YalePhysicsCourse.js';
+import { MitLectureCourse } from './MitLectureCourse.js';
+import { BlakeMortimerCatalog } from './BlakeMortimerCatalog.js';
+import { ComicVolumeDetail } from './ComicVolumeDetail.js';
+import { ShirowUniverse } from './ShirowUniverse.js';
+import { ShirowWorkDetail } from './ShirowWorkDetail.js';
+import { C64Games } from './C64Games.js';
+import { C64Neuromancer } from './C64Neuromancer.js';
+import { ActiveProjects } from './ActiveProjects.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   new SiteChrome().init();
@@ -24,4 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
   new StanfordCme295Course().init();
   new YouTubePlaylistCourse().init();
   new YalePhysicsCourse().init();
+  new MitLectureCourse().init();
+  new BlakeMortimerCatalog().init();
+  new ComicVolumeDetail().init();
+  new ShirowUniverse().init();
+  new ShirowWorkDetail().init();
+  new C64Games().init();
+  new C64Neuromancer().init();
+  new ActiveProjects().init();
 });
