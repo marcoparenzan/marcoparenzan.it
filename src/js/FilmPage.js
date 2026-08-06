@@ -24,6 +24,22 @@
         why: 'Il film mostra troubleshooting, simulazione, comunicazione e decisione sotto pressione. Il problema non è trovare una soluzione elegante, ma una soluzione verificabile con ciò che gli astronauti hanno realmente a bordo.',
         themes: ['Ingegneria sotto vincoli', 'Teamwork', 'Failure management', 'Procedure e simulazione', 'Leadership', 'Esplorazione spaziale'],
         quote: 'Houston, abbiamo un problema.', source: 'https://www.imdb.com/title/tt0112384/'
+      },
+      'gumball-rally': {
+        title: 'The Gumball Rally', year: '1976', director: 'Charles Bail', genre: 'Commedia / road movie',
+        tagline: 'Una corsa clandestina da costa a costa, senza premi e con una sola regola: non esistono regole.',
+        story: 'L’imprenditore Michael Bannon pronuncia la parola in codice “Gumball” e richiama un gruppo di eccentrici piloti a New York. Ferrari, Cobra, Porsche e altre auto partono verso Long Beach, in California, mentre il tenente Roscoe tenta ostinatamente di fermare la gara.',
+        why: 'È una commedia automobilistica costruita sul piacere della guida, sulla rivalità tra equipaggi e sull’America attraversata a tutta velocità. Ha contribuito a fissare nell’immaginario popolare il mito delle corse coast-to-coast.',
+        themes: ['Automobili iconiche', 'Corsa coast-to-coast', 'Competizione e amicizia', 'Libertà e trasgressione', 'Road movie', 'Cultura motoristica anni Settanta'],
+        quote: 'La prima regola della guida italiana: ciò che è dietro di me non è importante.', source: 'https://www.imdb.com/title/tt0074597/'
+      },
+      'cannonball-run': {
+        title: 'The Cannonball Run', year: '1981', director: 'Hal Needham', genre: 'Commedia d’azione / road movie',
+        tagline: 'Equipaggi improbabili, travestimenti e supercar in una folle gara clandestina attraverso gli Stati Uniti.',
+        story: 'J.J. McClure e Victor Prinzim partecipano alla Cannonball, una corsa illegale dal Connecticut alla California. Per evitare controlli trasformano la loro Dodge in un’ambulanza e si scontrano con un variopinto gruppo di rivali disposti a qualsiasi trucco pur di arrivare primi.',
+        why: 'Con Burt Reynolds, Roger Moore, Farrah Fawcett, Dom DeLuise e Jackie Chan, il film trasforma la gara transcontinentale in una commedia corale. Auto, gag e personalità del cast contano più del traguardo.',
+        themes: ['Gara clandestina', 'Commedia corale', 'Supercar', 'Travestimenti e stratagemmi', 'Spettacolo e stunt', 'Cultura pop anni Ottanta'],
+        quote: 'Non importa come arrivi: conta arrivare per primo.', source: 'https://www.imdb.com/title/tt0082136/'
       }
     };
   }

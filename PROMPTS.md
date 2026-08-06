@@ -20,3 +20,9 @@
 
 7. **Richiesta:** "Vorrei aggiungere un interesse Film: War Games, Blade Runner, Apollo 13, Star Trek, Star Trek tutto totale (serie, film)."
    **Intervento previsto:** creare una sezione Film con schede dedicate ai tre film e una guida completa a Star Trek, organizzata in sottocartelle per film e franchise e collegata dal menu Interessi.
+
+8. **Richiesta:** "aggiungi dei film: Gumball, Cannonball Run"
+   **Intervento previsto:** aggiungere due schede nella raccolta Film, interpretando “Gumball” come *The Gumball Rally* e creando anche la pagina di *The Cannonball Run*, con contesto, trama, temi e navigazione coerente.
+
+9. **Richiesta:** "Aggiungi https://json-structure.org/ all'IoT"
+   **Intervento previsto:** verificare la risorsa JSON Structure e aggiungerla alla sezione IoT con una pagina dedicata e un collegamento alla fonte ufficiale.

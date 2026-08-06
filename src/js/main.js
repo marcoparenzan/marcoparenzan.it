@@ -20,6 +20,7 @@ import { C64Neuromancer } from './C64Neuromancer.js';
 import { ActiveProjects } from './ActiveProjects.js';
 import { IoTTopicPage } from './IoTTopicPage.js';
 import { IndustrialIoTTopicPage } from './IndustrialIoTTopicPage.js';
+import { JSONStructureTopic } from './JSONStructureTopic.js';
 import { EmbeddedTopicPage } from './EmbeddedTopicPage.js';
 import { PhilosophyTopicPage } from './PhilosophyTopicPage.js';
 import { FilmPage } from './FilmPage.js';
@@ -48,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
   new ActiveProjects().init();
   new IoTTopicPage().init();
   new IndustrialIoTTopicPage().init();
+  new JSONStructureTopic().init();
   new EmbeddedTopicPage().init();
   new PhilosophyTopicPage().init();
   new FilmPage().init();
